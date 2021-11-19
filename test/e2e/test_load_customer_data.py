@@ -8,7 +8,6 @@ import boto3
 import pytest
 import psycopg2
 from botocore.exceptions import ClientError
-from moto import mock_iam, mock_lambda, mock_s3
 
 from datapipelines.load_customer_data import generate_load_customer_data
 from datapipelines.utils.sde_config import get_aws_connection, get_warehouse_connection, DBConnection
@@ -16,20 +15,17 @@ from datapipelines.utils.db import warehouse_connection
 
 
 @pytest.fixture
-@mock_s3
 def s3_client():
     return boto3.client("s3", **asdict(get_aws_connection()))
 
 
 @pytest.fixture
-@mock_iam
 def iam_client():
     iam = boto3.client('iam', **asdict(get_aws_connection()))
     return iam
 
 
 @pytest.fixture
-@mock_lambda
 def mocked_lambda_client(s3_client, iam_client):
     bucket_name = "landing-zone"
 
