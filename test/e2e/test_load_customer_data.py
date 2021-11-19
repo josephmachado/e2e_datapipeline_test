@@ -16,13 +16,13 @@ from datapipelines.utils.db import warehouse_connection
 
 @pytest.fixture
 def s3_client():
-    return boto3.client("s3", **asdict(get_aws_connection()))
+    yield boto3.client("s3", **asdict(get_aws_connection()))
 
 
 @pytest.fixture
 def iam_client():
     iam = boto3.client('iam', **asdict(get_aws_connection()))
-    return iam
+    yield iam
 
 
 @pytest.fixture
@@ -88,7 +88,7 @@ def mocked_lambda_client(s3_client, iam_client):
     )
     
     # We can add S3 event notification on object create but this is not implemented in Moto
-    return lambda_client
+    yield lambda_client
 
 
 @pytest.fixture
