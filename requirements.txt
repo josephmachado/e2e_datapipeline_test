@@ -1,0 +1,12 @@
+boto3
+python-dotenv
+psycopg2-binary
+pysftp
+pytest
+pytest-mock
+black
+flake8
+mypy
+moto[all]
+moto[server]
+isort

@@ -1,0 +1,9 @@
+env/
+
+__pycache__
+__init__.cpython*
+
+
+.vscode
+
+lambda/my-deployment-package.zip

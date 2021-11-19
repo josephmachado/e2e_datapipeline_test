@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+
+    sftp:
+      image: atmoz/sftp
+      container_name: sftp
+      volumes:
+          - ./test/fixtures/sftp:/home/sde/upload
+      ports:
+          - "2222:22"
+      command: sde:password:1001
