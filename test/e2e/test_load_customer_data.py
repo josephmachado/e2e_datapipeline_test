@@ -16,7 +16,10 @@ from datapipelines.utils.db import warehouse_connection
 
 @pytest.fixture
 def s3_client():
-    yield boto3.client("s3", **asdict(get_aws_connection()))
+    s3_client = boto3.client("s3", **asdict(get_aws_connection()))
+    bucket_name = "landing-zone"
+    s3_client.create_bucket(Bucket=bucket_name)
+    yield s3_client
 
 
 @pytest.fixture
@@ -33,7 +36,6 @@ def mocked_lambda_client(s3_client, iam_client):
     shutil.make_archive("./lambda/my-deployment-package", "zip", "lambda")
     
     # put deployment package in S3
-    s3_client.create_bucket(Bucket=bucket_name)
     s3_client.upload_file(
         "./lambda/my-deployment-package.zip",
         bucket_name,
