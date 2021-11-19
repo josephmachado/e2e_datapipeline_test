@@ -15,5 +15,5 @@ def sftp_to_s3(sftp_file: str, bucket_name: str, file_name: str) -> None:
         s3_client.upload_file(lcl_f.name, bucket_name, file_name)
 
 
-def generate_risk_prediction(sftp_file: str, bucket_name: str, file_name: str):
+def generate_load_customer_data(sftp_file: str, bucket_name: str, file_name: str):
     sftp_to_s3(sftp_file, bucket_name, file_name)

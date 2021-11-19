@@ -10,7 +10,7 @@ import psycopg2
 from botocore.exceptions import ClientError
 from moto import mock_iam, mock_lambda, mock_s3
 
-from datapipelines.risk_prediction import generate_risk_prediction
+from datapipelines.load_customer_data import generate_load_customer_data
 from datapipelines.utils.sde_config import get_aws_connection, get_warehouse_connection, DBConnection
 from datapipelines.utils.db import warehouse_connection
 
@@ -104,8 +104,8 @@ def set_up_tear_down():
         db_cur.execute('truncate table products.customers')
     
 
-def test_generate_risk_prediction(s3_client, mocked_lambda_client, set_up_tear_down):
-    generate_risk_prediction("upload/customer.csv", "landing-zone", "customer.csv")
+def test_generate_load_customer_data(s3_client, mocked_lambda_client, set_up_tear_down):
+    generate_load_customer_data("upload/customer.csv", "landing-zone", "customer.csv")
 
     # we manually trigger lambda since S3 object create trigger is not implemented in Moto
     # The payload to lambda will consist of more information when invoked on AWS
