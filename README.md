@@ -28,7 +28,7 @@ For our local setup, we will use
 
 You can run this data pipeline using GitHub codespaces. Follow the instructions below.
 
-1. Create codespaces by going to the **[e2e_datapipelin_test](https://github.com/josephmachado/e2e_datapipeline_test)** repository, cloning(or fork) it and then clicking on `Create codespaces on main` button.
+1. Create codespaces by going to the **[e2e_datapipeline_test](https://github.com/josephmachado/e2e_datapipeline_test)** repository, cloning(or fork) it and then clicking on `Create codespaces on main` button.
 2. Wait for codespaces to start and for codespaces to automatically install the libraries in `requirements.txt`, then in the terminal type `make up && export PYTHONPATH=${PYTHONPATH}:./src `.
 3. Wait for the above to complete.
 4. Now you can run our event pipeline end to end test using `pytest` command and you can clean up code with the `make ci` command
