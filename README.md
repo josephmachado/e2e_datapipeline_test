@@ -37,7 +37,6 @@ You can run this data pipeline using GitHub codespaces. Follow the instructions 
 
 ![codespace start](./assets/images/cs1.png)
 ![codespace make up](./assets/images/cs2.png)
-![codespace access ui](./assets/images/cs3.png)
 
 **Note** Make sure to switch off codespaces instance, you only have limited free usage; see docs [here](https://github.com/features/codespaces#pricing).
 
